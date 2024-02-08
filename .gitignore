@@ -2,3 +2,4 @@ llm-env/
 __pycache__/
 .ipynb_checkpoints
 .env
+src/auto_prompt.egg-info/

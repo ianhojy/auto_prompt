@@ -1,1 +1,1 @@
-# self-improving-llm
+# auto_prompt

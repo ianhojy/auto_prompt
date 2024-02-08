@@ -1,6 +1,0 @@
-README.md
-setup.py
-src/self_improving_llm.egg-info/PKG-INFO
-src/self_improving_llm.egg-info/SOURCES.txt
-src/self_improving_llm.egg-info/dependency_links.txt
-src/self_improving_llm.egg-info/top_level.txt
