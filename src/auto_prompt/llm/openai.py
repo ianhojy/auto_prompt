@@ -65,3 +65,4 @@ class OpenAICompletionEngine:
             return response
         except Exception as e:
             print(e)
+            print('error')
