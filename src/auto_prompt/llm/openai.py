@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 from openai import OpenAI, AzureOpenAI
-
+import json
 from .models.openai import MessageRole
 
 class OpenAICompletionEngine:
@@ -25,8 +25,6 @@ class OpenAICompletionEngine:
             raise Exception("Invalid value for `cred_source`")
     
         self._messages: List[Dict] = list()
-        # self._model = "gpt-3.5.turbo"
-        # self._model = "gpt-35-turbo"
         self._model = "gpt-4-32k"
     
     def set_model(self, model) -> None:
@@ -60,8 +58,23 @@ class OpenAICompletionEngine:
         try:
             response = self.client.chat.completions.create(
                 model=self._model,
-                messages=self._messages
-                )
+                messages=self._messages,
+                ).choices[0].message.content
+            return response
+        except Exception as e:
+            print(e)
+            print('error')
+
+    def get_response_with_tool(self, tool):
+        try:
+            response = self.client.chat.completions.create(
+                model=self._model,
+                messages=self._messages,
+                tools=[tool],
+                tool_choice={"type": "function", "function": {"name": tool['function']['name']}}
+                ).choices[0].message.tool_calls[0].function.arguments
+
+            response = json.loads(response)
             return response
         except Exception as e:
             print(e)
