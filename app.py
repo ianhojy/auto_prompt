@@ -28,7 +28,9 @@ if 'examples' not in st.session_state:
 if 'archive_examples' not in st.session_state:
     st.session_state.archive_examples = list()
 if 'prompt' not in st.session_state:
-    st.session_state.prompt = "write me a 100-word fake but realistic news article about the issue of `{{issue}}` in `{{country}}`"
+    # st.session_state.prompt = "write me a 100-word fake but realistic news article about the issue of `{{issue}}` in `{{country}}`"
+    st.session_state.prompt = "provide me with 3 short story ideas about `{{issue}}` in `{{country}}`"
+
 
 st.session_state.prompt = st.text_area("Input Prompt:", value=st.session_state.prompt)
 
